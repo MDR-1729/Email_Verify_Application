@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Email-Verification Application {% endblock %}
+
+{% block content %}
+<div class="flow-label">
+    <span>EMAIL VERIFICATION</span>
+    <span class="flow-count">01 / 02</span>
+</div>
+
+<div class="content-heading">
+    <p class="eyebrow">SECURE ACCESS</p>
+    <h1>Sign in with<br><span>your email.</span></h1>
+    <p class="lead">We'll send a one-time code to confirm it's you.</p>
+</div>
+
+<form class="auth-form" method="post">
+    {% csrf_token %}
+    <div class="field-group">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required autofocus>
+    </div>
+    {% if error %}<p class="form-alert" role="alert">{{ error }}</p>{% endif %}
+    <button class="primary-button" type="submit">
+        <span>Send verification code</span>
+        <span class="button-arrow" aria-hidden="true">&#8599;</span>
+    </button>
+</form>
+
+<p class="privacy-note"><span class="privacy-mark" aria-hidden="true">i</span> Your address is used only for this verification.</p>
+{% endblock %}

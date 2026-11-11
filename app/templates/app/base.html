@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#173c34">
+	<title>{% block title %} Email-Verification Application {% endblock %}</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'app/site.css' %}">
+
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="brand-panel" aria-label="Verity identity">
+			<a class="wordmark" href="{% url 'login' %}" aria-label="Verity home">
+				<span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+				<span class="wordmark-name">VERITY<span class="wordmark-caption">IDENTITY SYSTEM</span></span>
+			</a>
+
+			<div class="brand-copy">
+				<p class="eyebrow">ACCESS / {% if step == 2 %}02{% else %}01{% endif %}</p>
+				<h2>Security<br><em>that feels</em><br>effortless.</h2>
+				<p class="brand-caption">PRIVATE BY DESIGN</p>
+			</div>
+
+			<div class="security-index" aria-hidden="true">
+				<span>VERIFICATION FLOW</span>
+				<div class="progress-track">
+					<i class="{% if step == 2 %}is-complete{% else %}is-active{% endif %}"></i>
+					<i class="{% if step == 2 %}is-active{% endif %}"></i>
+				</div>
+				<span>{% if step == 2 %}02{% else %}01{% endif %} <b>/</b> 02</span>
+			</div>
+
+			<div class="brand-footer">
+				<span>VERITY ACCESS</span>
+				<span class="online"><i></i> SYSTEM ONLINE</span>
+			</div>
+		</aside>
+
+		<main class="main-panel">
+			<header class="mobile-header">
+				<a class="wordmark wordmark-dark" href="{% url 'login' %}" aria-label="Verity home">
+					<span class="wordmark-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+					<span class="wordmark-name">VERITY<span class="wordmark-caption">IDENTITY SYSTEM</span></span>
+				</a>
+				<span class="online"><i></i> SYSTEM ONLINE</span>
+			</header>
+			<section class="page-content">
+				{% block content %}{% endblock %}
+			</section>
+			<footer class="page-footer">
+				<span>VERITY / IDENTITY</span>
+				<span>SECURE SESSION <i>·</i> 2026</span>
+			</footer>
+		</main>
+	</div>
+</body>
+</html>

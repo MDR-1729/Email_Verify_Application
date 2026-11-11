@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Verification Failed {% endblock %}
+
+{% block content %}
+<div class="result-view is-error">
+	<div class="flow-label">
+		<span>VERIFICATION RESULT</span>
+		<span class="flow-count">ACTION NEEDED</span>
+	</div>
+	<div class="result-mark" aria-hidden="true">!</div>
+	<h1 class="result-heading">That code didn't<br><span>go through.</span></h1>
+	<p class="result-copy">It may be incorrect or your session may have expired. Start again to request a new code.</p>
+	<a class="primary-button" href="{% url 'login' %}">
+		<span>Request a new code</span>
+		<span class="button-arrow" aria-hidden="true">&#8599;</span>
+	</a>
+</div>
+{% endblock %}

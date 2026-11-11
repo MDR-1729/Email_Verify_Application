@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+
+{% block title %} Email Verified Successfully {% endblock %}
+
+{% block content %}
+<div class="result-view">
+	<div class="flow-label">
+		<span>VERIFICATION RESULT</span>
+		<span class="flow-count">COMPLETE</span>
+	</div>
+	<div class="result-mark" aria-hidden="true">&#10003;</div>
+	<h1 class="result-heading">You're all set<span>.</span></h1>
+	<p class="result-copy">Your email has been verified{% if email %} for <strong>{{ email }}</strong>{% endif %}.</p>
+	<a class="primary-button" href="{% url 'login' %}">
+		<span>Return to start</span>
+		<span class="button-arrow" aria-hidden="true">&#8599;</span>
+	</a>
+</div>
+{% endblock %}
