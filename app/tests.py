@@ -11,6 +11,12 @@ class OTPFlowTests(TestCase):
 		self.assertContains(response, 'ACCESS / 01')
 		self.assertContains(response, '01 <b>/</b> 02', html=True)
 
+	def test_stylesheet_is_served(self):
+		response = self.client.get('/static/app/site.css')
+
+		self.assertEqual(response.status_code, 200)
+		self.assertContains(response, '--forest: #173c34;')
+
 	@patch('app.views.send_mail')
 	def test_login_sends_code_and_redirects_to_verification(self, send_mail_mock):
 		response = self.client.post('/', {'email': 'person@example.com'})
